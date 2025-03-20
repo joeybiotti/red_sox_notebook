@@ -3,3 +3,7 @@ pandas
 matplotlib
 scikit-learn
 jupyter
+seaborn
+scipy
+statsmodels
+notebook
