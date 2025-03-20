@@ -1,6 +1,6 @@
-# Red Sox Notebook Experiment
+# Red Sox Notebook
 
-This repository is an experiment with Jupyter Notebooks, using a dataset of all Red Sox plays from 1908 to 2018.
+This repository is an experiment with Jupyter Notebooks, using a dataset of all Red Sox plays from 1908 to 2020.
 
 ## Installation
 
