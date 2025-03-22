@@ -24,5 +24,17 @@ class TestDataIntegrity(unittest.TestCase):
         for column, expected_dtype in expected_dtypes.items():
             self.assertEqual(self.red_sox_data[column].dtype, expected_dtype, f"Column {column} has incorrect dtype: {self.red_sox_data[column].dtype}")
 
+    def test_unique_player_names_per_season(self):
+        duplicates = self.red_sox_data[self.red_sox_data.duplicated(subset=['Name', 'Season'], keep=False)]
+        self.assertTrue(duplicates.empty, "There are duplicate player names for the same season")
+
+    def test_valid_age_range(self):
+        valid_age_range = (self.red_sox_data['Age'] >= 16) & (self.red_sox_data['Age'] <= 60)
+        self.assertTrue(valid_age_range.all(), "There are players with ages outside the valid range (16-60)")
+
+    def test_valid_season_range(self):
+        valid_season_range = (self.red_sox_data['Season'] >= 1908) & (self.red_sox_data['Season'] <= 2020)
+        self.assertTrue(valid_season_range.all(), "There are seasons outside the valid range (1908-2020)")
+
 if __name__ == '__main__':
     unittest.main()
