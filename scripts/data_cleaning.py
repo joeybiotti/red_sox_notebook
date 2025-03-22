@@ -13,6 +13,13 @@ def clean_data(file_path, output_path):
     # Handle missing values in 'Age' column
     data['Age']=data['Age'].fillna(data['Age'].mean())
     
+    # Remove duplicates
+    data = data.drop_duplicates()
+    
+    # Remove Flag column-- all values NaN
+    if 'Flag' in data.columns:
+        data = data.drop(columns=['Flag'])
+    
     # Saved cleaned data to output path
     data.to_csv(output_path, index=False)
     
